@@ -1,5 +1,7 @@
 package com.acme.edu;
 
+import com.acme.ooad.BooleanMessage;
+import com.acme.ooad.CharMessage;
 import com.acme.ooad.IntMessage;
 import com.acme.ooad.Message;
 
@@ -64,8 +66,19 @@ public class Logger {
     }
 
     public static void log(boolean message) {
-        cachePrint();
-        System.out.println("primitive: " + message);
+
+//        Message currentMessage = logger.getCurrentMessage();
+        logger.log();
+        logger.setCurrentMessage(new BooleanMessage(message));
+
+//        if (currentMessage != null && currentMessage instanceof BooleanMessage) {
+//            logger.updateIntMessage(message);
+//        } else {
+//            logger.setCurrentMessage(new IntMessage(message));
+//        }
+
+//        cachePrint();
+//        System.out.println("primitive: " + message);
     }
 
     public static void log(String message) {
@@ -87,8 +100,13 @@ public class Logger {
     }
 
     public static void log(char message) {
-        cachePrint();
-        System.out.println("char: " + message);
+
+        logger.log();
+        logger.setCurrentMessage(new CharMessage(message));
+
+
+//        cachePrint();
+//        System.out.println("char: " + message);
     }
 
     public static void log(byte message) {
