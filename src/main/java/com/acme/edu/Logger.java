@@ -1,6 +1,15 @@
 package com.acme.edu;
 
+import com.acme.ooad.IntMessage;
+import com.acme.ooad.Message;
+
 public class Logger {
+    private static com.acme.ooad.Logger logger;
+
+    static {
+        logger = new com.acme.ooad.Logger();
+    }
+
     private static boolean isPreviousInt = false;
     private static long intSum = 0;
 
@@ -29,20 +38,29 @@ public class Logger {
     }
 
     public static void log(int message) {
-        if (!isPreviousInt) {
-            cachePrint();
-            isPreviousInt = true;
+
+        Message currentMessage = logger.getCurrentMessage();
+
+        if (currentMessage != null && currentMessage instanceof IntMessage) {
+            logger.updateIntMessage(message);
+        } else {
+            logger.setCurrentMessage(new IntMessage(message));
         }
 
-        if (intSum + message > (long) Integer.MAX_VALUE) {
-            System.out.println("primitive: " + Integer.MAX_VALUE);
-            intSum = (message + intSum) % Integer.MAX_VALUE;
-        } else if (intSum + message < (long) Integer.MIN_VALUE) {
-            System.out.println("primitive: " + Integer.MIN_VALUE);
-            intSum = (message + intSum) % Integer.MIN_VALUE;
-        } else {
-            intSum += message;
-        }
+//        if (!isPreviousInt) {
+//            cachePrint();
+//            isPreviousInt = true;
+//        }
+//
+//        if (intSum + message > (long) Integer.MAX_VALUE) {
+//            System.out.println("primitive: " + Integer.MAX_VALUE);
+//            intSum = (message + intSum) % Integer.MAX_VALUE;
+//        } else if (intSum + message < (long) Integer.MIN_VALUE) {
+//            System.out.println("primitive: " + Integer.MIN_VALUE);
+//            intSum = (message + intSum) % Integer.MIN_VALUE;
+//        } else {
+//            intSum += message;
+//        }
     }
 
     public static void log(boolean message) {
@@ -91,24 +109,25 @@ public class Logger {
     }
 
     public static void cachePrint() {
-        if (isPreviousInt) {
-            System.out.println("primitive: " + intSum);
-            intSum = 0;
-            isPreviousInt = false;
-        }
-
-        if (isPreviousByte) {
-            System.out.println("primitive: " + byteSum);
-            byteSum = 0;
-            isPreviousByte = false;
-        }
-
-        if (previousString != null) {
-            String appendix = (equalStringsCount > 1) ? " (x" + equalStringsCount + ")" : "";
-            System.out.println("string: " + previousString + appendix);
-            equalStringsCount = 0;
-            previousString = null;
-        }
+//        if (isPreviousInt) {
+//            System.out.println("primitive: " + intSum);
+//            intSum = 0;
+//            isPreviousInt = false;
+//        }
+//
+//        if (isPreviousByte) {
+//            System.out.println("primitive: " + byteSum);
+//            byteSum = 0;
+//            isPreviousByte = false;
+//        }
+//
+//        if (previousString != null) {
+//            String appendix = (equalStringsCount > 1) ? " (x" + equalStringsCount + ")" : "";
+//            System.out.println("string: " + previousString + appendix);
+//            equalStringsCount = 0;
+//            previousString = null;
+//        }
+        logger.log();
     }
 
     private static boolean isNull(Object message) {
