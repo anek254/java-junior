@@ -1,5 +1,10 @@
 package com.acme.ooad;
 
+import com.acme.ooad.formatters.Formatter;
+import com.acme.ooad.formatters.NullFormatter;
+import com.acme.ooad.messages.Message;
+import com.acme.ooad.savers.Saver;
+
 public class Logger {
     private Message currentMessage;
     private Saver saver;

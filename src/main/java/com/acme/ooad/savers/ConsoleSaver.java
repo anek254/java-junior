@@ -1,4 +1,4 @@
-package com.acme.ooad;
+package com.acme.ooad.savers;
 
 public class ConsoleSaver implements Saver {
     @Override

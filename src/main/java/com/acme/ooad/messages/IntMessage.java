@@ -1,15 +1,25 @@
-package com.acme.ooad;
+package com.acme.ooad.messages;
+
+import com.acme.ooad.Logger;
+import com.acme.ooad.messageformatters.MessageFormatter;
 
 public class IntMessage implements Message {
-    private int value;
 
-    public IntMessage(int value) {
+    private int value;
+    private MessageFormatter messageFormatter;
+
+    public IntMessage(int value, MessageFormatter messageFormatter) {
         this.value = value;
+        this.messageFormatter = messageFormatter;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     @Override
     public String messageToString() {
-        return "primitive: " + value;
+        return messageFormatter.messageFormat(this);
     }
 
     public void updateMessage(Object message, Logger logger) {
@@ -29,7 +39,7 @@ public class IntMessage implements Message {
     }
 
     private void printAndUpdateWhenOverflow(long sum, int limit, Logger logger) {
-        logger.log(new IntMessage(limit));
+        logger.log(new IntMessage(limit, messageFormatter));
         value = (int)(sum % limit);
     }
 }

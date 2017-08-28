@@ -1,6 +1,8 @@
 package com.acme.edu;
 
-import com.acme.ooad.*;
+import com.acme.ooad.messageformatters.*;
+import com.acme.ooad.messages.*;
+import com.acme.ooad.savers.ConsoleSaver;
 
 public class Logger {
     private static com.acme.ooad.Logger logger;
@@ -20,7 +22,7 @@ public class Logger {
         if (isNull(message)) return;
 
         logger.log();
-        logger.setCurrentMessage(new ArrayMessage(message));
+        logger.setCurrentMessage(new ArrayMessage(message, new ArrayStandardMessageFormatter()));
     }
 
     public static void log(int message) {
@@ -30,13 +32,13 @@ public class Logger {
             logger.updateMessage(message);
         } else {
             logger.log();
-            logger.setCurrentMessage(new IntMessage(message));
+            logger.setCurrentMessage(new IntMessage(message, new IntStandardMessageFormatter()));
         }
     }
 
     public static void log(boolean message) {
         logger.log();
-        logger.setCurrentMessage(new BooleanMessage(message));
+        logger.setCurrentMessage(new BooleanMessage(message, new BooleanStandardMessageFormatter()));
     }
 
     public static void log(String message) {
@@ -49,13 +51,13 @@ public class Logger {
             logger.updateMessage(message);
         } else {
             logger.log();
-            logger.setCurrentMessage(new StringMessage(message));
+            logger.setCurrentMessage(new StringMessage(message, new StringStandardMessageFormatter()));
         }
     }
 
     public static void log(char message) {
         logger.log();
-        logger.setCurrentMessage(new CharMessage(message));
+        logger.setCurrentMessage(new CharMessage(message, new CharStandardMessageFormatter()));
     }
 
     public static void log(byte message) {
@@ -65,7 +67,7 @@ public class Logger {
             logger.updateMessage(message);
         } else {
             logger.log();
-            logger.setCurrentMessage(new ByteMessage(message));
+            logger.setCurrentMessage(new ByteMessage(message, new ByteStandardMessageFormatter()));
         }
     }
 
