@@ -1,150 +1,75 @@
 package com.acme.edu;
 
-import com.acme.ooad.BooleanMessage;
-import com.acme.ooad.CharMessage;
-import com.acme.ooad.IntMessage;
-import com.acme.ooad.Message;
+import com.acme.ooad.*;
 
 public class Logger {
     private static com.acme.ooad.Logger logger;
 
     static {
-        logger = new com.acme.ooad.Logger();
+        logger = new com.acme.ooad.Logger(new ConsoleSaver());
     }
 
-    private static boolean isPreviousInt = false;
-    private static long intSum = 0;
-
-    private static boolean isPreviousByte = false;
-    private static int byteSum = 0;
-
-    private static String previousString = null;
-    private static int equalStringsCount = 0;
-
     public static void log(Object message) {
-        if (isNull(message)) {
-            return;
-        }
+        if (isNull(message)) return;
 
-        cachePrint();
-        System.out.println("reference: " + message);
+        logger.log();
+        logger.setCurrentMessage(new ObjectMessage(message));
     }
 
     public static void log(int[] message) {
-        if (isNull(message)) {
-            return;
-        }
+        if (isNull(message)) return;
 
-        cachePrint();
-        System.out.println("primitives array: " + arrayToString(message));
+        logger.log();
+        logger.setCurrentMessage(new ArrayMessage(message));
     }
 
     public static void log(int message) {
-
         Message currentMessage = logger.getCurrentMessage();
 
-        if (currentMessage != null && currentMessage instanceof IntMessage) {
-            logger.updateIntMessage(message);
+        if (currentMessage instanceof IntMessage) {
+            logger.updateMessage(message);
         } else {
+            logger.log();
             logger.setCurrentMessage(new IntMessage(message));
         }
-
-//        if (!isPreviousInt) {
-//            cachePrint();
-//            isPreviousInt = true;
-//        }
-//
-//        if (intSum + message > (long) Integer.MAX_VALUE) {
-//            System.out.println("primitive: " + Integer.MAX_VALUE);
-//            intSum = (message + intSum) % Integer.MAX_VALUE;
-//        } else if (intSum + message < (long) Integer.MIN_VALUE) {
-//            System.out.println("primitive: " + Integer.MIN_VALUE);
-//            intSum = (message + intSum) % Integer.MIN_VALUE;
-//        } else {
-//            intSum += message;
-//        }
     }
 
     public static void log(boolean message) {
-
-//        Message currentMessage = logger.getCurrentMessage();
         logger.log();
         logger.setCurrentMessage(new BooleanMessage(message));
-
-//        if (currentMessage != null && currentMessage instanceof BooleanMessage) {
-//            logger.updateIntMessage(message);
-//        } else {
-//            logger.setCurrentMessage(new IntMessage(message));
-//        }
-
-//        cachePrint();
-//        System.out.println("primitive: " + message);
     }
 
     public static void log(String message) {
-        if (isNull(message)) {
-            return;
-        }
+        if (isNull(message)) return;
+        if ("".equals(message)) return;
 
-        if ("".equals(message)) {
-            return;
-        }
+        Message currentMessage = logger.getCurrentMessage();
 
-        if (previousString == null || !previousString.equals(message)) {
-            cachePrint();
-            previousString = message;
-            equalStringsCount = 1;
+        if (currentMessage instanceof StringMessage) {
+            logger.updateMessage(message);
         } else {
-            equalStringsCount++;
+            logger.log();
+            logger.setCurrentMessage(new StringMessage(message));
         }
     }
 
     public static void log(char message) {
-
         logger.log();
         logger.setCurrentMessage(new CharMessage(message));
-
-
-//        cachePrint();
-//        System.out.println("char: " + message);
     }
 
     public static void log(byte message) {
-        if (!isPreviousByte) {
-            cachePrint();
-        }
+        Message currentMessage = logger.getCurrentMessage();
 
-        isPreviousByte = true;
-        if (byteSum + message > (int) Byte.MAX_VALUE) {
-            System.out.println("primitive: " + Byte.MAX_VALUE);
-            byteSum = (message + byteSum) % Byte.MAX_VALUE;
-        } else if (byteSum + message < (int) Byte.MIN_VALUE) {
-            System.out.println("primitive: " + Byte.MIN_VALUE);
-            byteSum = (message + byteSum) % Byte.MIN_VALUE;
+        if (currentMessage instanceof ByteMessage) {
+            logger.updateMessage(message);
         } else {
-            byteSum += message;
+            logger.log();
+            logger.setCurrentMessage(new ByteMessage(message));
         }
     }
 
     public static void cachePrint() {
-//        if (isPreviousInt) {
-//            System.out.println("primitive: " + intSum);
-//            intSum = 0;
-//            isPreviousInt = false;
-//        }
-//
-//        if (isPreviousByte) {
-//            System.out.println("primitive: " + byteSum);
-//            byteSum = 0;
-//            isPreviousByte = false;
-//        }
-//
-//        if (previousString != null) {
-//            String appendix = (equalStringsCount > 1) ? " (x" + equalStringsCount + ")" : "";
-//            System.out.println("string: " + previousString + appendix);
-//            equalStringsCount = 0;
-//            previousString = null;
-//        }
         logger.log();
     }
 
@@ -152,25 +77,8 @@ public class Logger {
         return message == null;
     }
 
-    private static String arrayToString(int[] a) {
-        int iMax = a.length - 1;
-        if (iMax == -1)
-            return "{}";
-
-        StringBuilder b = new StringBuilder();
-        b.append('{');
-        for (int i = 0; ; i++) {
-            b.append(a[i]);
-            if (i == iMax)
-                return b.append('}').toString();
-            b.append(", ");
-        }
-    }
-
     public static void main(String[] args) {
-        Logger.log(-5);
-        Logger.log(Integer.MIN_VALUE);
-        Logger.log(-8);
+        Logger.log(new int[] {-1, 0, 1});
         Logger.cachePrint();
     }
 }

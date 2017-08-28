@@ -2,6 +2,18 @@ package com.acme.ooad;
 
 public class Logger {
     private Message currentMessage;
+    private Saver saver;
+    private Formatter formatter;
+
+    public Logger(Saver saver) {
+        this.saver = saver;
+        this.formatter = new NullFormatter();
+    }
+
+    public Logger(Saver saver, Formatter formatter) {
+        this.saver = saver;
+        this.formatter = formatter;
+    }
 
     public Message getCurrentMessage() {
         return currentMessage;
@@ -11,24 +23,18 @@ public class Logger {
         this.currentMessage = currentMessage;
     }
 
-    public void updateIntMessage(int message) {
-        int value = ((IntMessage)currentMessage).getValue();
-
-        if (value + message > (long) Integer.MAX_VALUE) {
-            System.out.println("primitive: " + Integer.MAX_VALUE);
-            value = (message + value) % Integer.MAX_VALUE;
-        } else if (value + message < (long) Integer.MIN_VALUE) {
-            System.out.println("primitive: " + Integer.MIN_VALUE);
-            value = (message + value) % Integer.MIN_VALUE;
-        } else {
-            value += message;
-        }
-
-        ((IntMessage)currentMessage).setValue(value);
-    }
-
     public void log() {
         if (currentMessage == null) return;
-        System.out.println(currentMessage.messageToString());
+        saver.save(formatter.format(currentMessage.messageToString()));
+        currentMessage = null;
+    }
+
+    public void log(Message message) {
+        if (message == null) return;
+        saver.save(formatter.format(message.messageToString()));
+    }
+
+    public void updateMessage(Object message) {
+        currentMessage.updateMessage(message, this);
     }
 }

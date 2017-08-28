@@ -12,4 +12,7 @@ public class BooleanMessage implements Message {
     public String messageToString() {
         return "primitive: " + value;
     }
+
+    @Override
+    public void updateMessage(Object message, Logger logger) {}
 }

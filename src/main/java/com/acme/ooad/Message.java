@@ -1,5 +1,7 @@
 package com.acme.ooad;
 
 public interface Message {
-    public String messageToString();
+    String messageToString();
+
+    void updateMessage(Object message, Logger logger);
 }

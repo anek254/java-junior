@@ -3,11 +3,17 @@ package com.acme.ooad;
 public class ArrayMessage implements Message {
     private int[] value;
 
+    public ArrayMessage(int[] value) {
+        this.value = value;
+    }
 
     @Override
     public String messageToString() {
         return "primitives array: " + arrayToString(value);
     }
+
+    @Override
+    public void updateMessage(Object message, Logger logger) {}
 
     private static String arrayToString(int[] a) {
         int iMax = a.length - 1;

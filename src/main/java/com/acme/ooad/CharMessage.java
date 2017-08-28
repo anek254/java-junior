@@ -12,4 +12,7 @@ public class CharMessage implements Message {
     public String messageToString() {
         return "char: " + value;
     }
+
+    @Override
+    public void updateMessage(Object message, Logger logger) {}
 }
