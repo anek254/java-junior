@@ -4,15 +4,14 @@ import com.acme.ooad.Logger;
 import com.acme.ooad.messageformatters.MessageFormatter;
 
 public class StringMessage implements Message {
-
     private String value;
     private int equalStringCount;
     private MessageFormatter messageFormatter;
 
     public StringMessage(String value, MessageFormatter messageFormatter) {
         this.value = value;
-        this.equalStringCount = 1;
         this.messageFormatter = messageFormatter;
+        this.equalStringCount = 1;
     }
 
     public String getValue() {
@@ -21,13 +20,13 @@ public class StringMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.messageFormat(this);
+        return messageFormatter.formatMessage(this);
     }
 
     public void updateMessage(Object message, Logger logger) {
         String stringMessage = (String)message;
 
-        if (isEqual(stringMessage)) {
+        if (isEqualToPrevious(stringMessage)) {
             ++equalStringCount;
         } else {
             logger.log();
@@ -36,11 +35,11 @@ public class StringMessage implements Message {
         }
     }
 
-    private boolean isEqual(String string) {
+    private boolean isEqualToPrevious(String string) {
         return (value != null) && value.equals(string);
     }
 
-    private String getPostfix() {
+    public String getPostfix() {
         return (equalStringCount > 1) ? " (x" + equalStringCount + ")" : "";
     }
 }

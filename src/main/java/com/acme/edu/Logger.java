@@ -13,14 +13,12 @@ public class Logger {
 
     public static void log(Object message) {
         if (isNull(message)) return;
-
         logger.log();
-        logger.setCurrentMessage(new ObjectMessage(message));
+        logger.setCurrentMessage(new ObjectMessage(message, new ObjectStandardMessageFormatter()));
     }
 
     public static void log(int[] message) {
         if (isNull(message)) return;
-
         logger.log();
         logger.setCurrentMessage(new ArrayMessage(message, new ArrayStandardMessageFormatter()));
     }
@@ -77,10 +75,5 @@ public class Logger {
 
     private static boolean isNull(Object message) {
         return message == null;
-    }
-
-    public static void main(String[] args) {
-        Logger.log(new int[] {-1, 0, 1});
-        Logger.cachePrint();
     }
 }

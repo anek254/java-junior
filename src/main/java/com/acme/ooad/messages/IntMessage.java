@@ -4,7 +4,6 @@ import com.acme.ooad.Logger;
 import com.acme.ooad.messageformatters.MessageFormatter;
 
 public class IntMessage implements Message {
-
     private int value;
     private MessageFormatter messageFormatter;
 
@@ -19,7 +18,7 @@ public class IntMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.messageFormat(this);
+        return messageFormatter.formatMessage(this);
     }
 
     public void updateMessage(Object message, Logger logger) {

@@ -18,7 +18,7 @@ public class ArrayMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.messageFormat(this);
+        return messageFormatter.formatMessage(this);
     }
 
     @Override

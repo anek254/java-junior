@@ -5,7 +5,6 @@ import com.acme.ooad.messageformatters.MessageFormatter;
 
 public class BooleanMessage implements Message {
     private boolean value;
-
     private MessageFormatter messageFormatter;
 
     public BooleanMessage(boolean value, MessageFormatter messageFormatter) {
@@ -19,7 +18,7 @@ public class BooleanMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.messageFormat(this);
+        return messageFormatter.formatMessage(this);
     }
 
     @Override

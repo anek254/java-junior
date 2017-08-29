@@ -3,11 +3,8 @@ package com.acme.ooad.messages;
 import com.acme.ooad.Logger;
 import com.acme.ooad.messageformatters.MessageFormatter;
 
-import static com.acme.ooad.messageformatters.TypeSpecifications.CHAR_PREFIX;
-
 public class CharMessage implements Message {
     private char value;
-
     private MessageFormatter messageFormatter;
 
     public CharMessage(char value, MessageFormatter messageFormatter) {
@@ -21,7 +18,7 @@ public class CharMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.messageFormat(this);
+        return messageFormatter.formatMessage(this);
     }
 
     @Override

@@ -15,17 +15,12 @@ public class Logger {
         this.formatter = new NullFormatter();
     }
 
-    public Logger(Saver saver, Formatter formatter) {
-        this.saver = saver;
-        this.formatter = formatter;
-    }
-
     public Message getCurrentMessage() {
         return currentMessage;
     }
 
-    public void setCurrentMessage(Message currentMessage) {
-        this.currentMessage = currentMessage;
+    public void setCurrentMessage(Message message) {
+        this.currentMessage = message;
     }
 
     public void log() {

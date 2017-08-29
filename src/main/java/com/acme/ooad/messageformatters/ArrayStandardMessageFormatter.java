@@ -2,13 +2,12 @@ package com.acme.ooad.messageformatters;
 
 import com.acme.ooad.messages.ArrayMessage;
 import com.acme.ooad.messages.Message;
-
 import static com.acme.ooad.messageformatters.TypeSpecifications.ARRAY_PREFIX;
 
 public class ArrayStandardMessageFormatter implements MessageFormatter {
 
     @Override
-    public String messageFormat(Message message) {
+    public String formatMessage(Message message) {
         return ARRAY_PREFIX + arrayToString(((ArrayMessage)message).getValue());
     }
 

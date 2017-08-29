@@ -3,8 +3,6 @@ package com.acme.ooad.messages;
 import com.acme.ooad.Logger;
 import com.acme.ooad.messageformatters.MessageFormatter;
 
-import static com.acme.ooad.messageformatters.TypeSpecifications.OBJECT_PREFIX;
-
 public class ObjectMessage implements Message {
     private Object value;
     private MessageFormatter messageFormatter;
@@ -24,7 +22,7 @@ public class ObjectMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.messageFormat(this);
+        return messageFormatter.formatMessage(this);
     }
 
     @Override
