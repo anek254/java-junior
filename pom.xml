@@ -51,7 +51,7 @@
         <version>1.2.0</version>
         <configuration>
           <targetClasses>
-            <param>com.acme.edu*</param>
+            <param>com.acme.ooad*</param>
           </targetClasses>
           <targetTests>
             <param>com.acme.edu*</param>
