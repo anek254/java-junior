@@ -7,7 +7,6 @@ import com.acme.ooad.messageformatters.IntStandardMessageFormatter;
 import com.acme.ooad.messageformatters.StringStandardMessageFormatter;
 import com.acme.ooad.messages.ByteMessage;
 import com.acme.ooad.messages.IntMessage;
-import com.acme.ooad.messages.Message;
 import com.acme.ooad.messages.StringMessage;
 import org.junit.Assert;
 import org.junit.Test;

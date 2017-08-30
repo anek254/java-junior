@@ -4,7 +4,6 @@ import com.acme.edu.SysoutCaptureAndAssertionAbility;
 import com.acme.ooad.messageformatters.*;
 import com.acme.ooad.messages.*;
 import org.junit.*;
-import java.io.IOException;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
