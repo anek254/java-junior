@@ -1,7 +1,7 @@
 //package com.acme.edu.moduletests;
 //
 //import com.acme.edu.SysoutCaptureAndAssertionAbility;
-//import com.acme.ooad.FormattingSavingHandler;
+//import com.acme.ooad.messages.FormattingSavingHandler;
 //import com.acme.ooad.messageformatters.ByteStandardMessageFormatter;
 //import com.acme.ooad.messageformatters.IntStandardMessageFormatter;
 //import com.acme.ooad.messageformatters.StringStandardMessageFormatter;

@@ -1,8 +1,8 @@
-package com.acme.ooad;
+package com.acme.ooad.messages;
 
+import com.acme.ooad.EventHandler;
 import com.acme.ooad.formatters.Formatter;
 import com.acme.ooad.formatters.NullFormatter;
-import com.acme.ooad.messages.*;
 import com.acme.ooad.savers.Saver;
 
 public class FormattingSavingHandler implements EventHandler {

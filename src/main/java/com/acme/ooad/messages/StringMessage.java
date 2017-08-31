@@ -1,7 +1,5 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.FormattingSavingHandler;
-
 import static com.acme.ooad.messages.TypeSpecifications.STRING_PREFIX;
 
 public class StringMessage implements Message {

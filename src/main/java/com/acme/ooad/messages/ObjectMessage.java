@@ -1,7 +1,5 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.FormattingSavingHandler;
-
 import static com.acme.ooad.messages.TypeSpecifications.OBJECT_PREFIX;
 
 public class ObjectMessage implements Message {

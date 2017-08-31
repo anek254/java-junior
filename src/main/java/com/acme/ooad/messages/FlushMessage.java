@@ -1,7 +1,5 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.FormattingSavingHandler;
-
 public class FlushMessage implements Message {
 
     @Override

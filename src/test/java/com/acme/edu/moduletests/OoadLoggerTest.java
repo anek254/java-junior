@@ -1,6 +1,6 @@
 //package com.acme.edu.moduletests;
 //
-//import com.acme.ooad.FormattingSavingHandler;
+//import com.acme.ooad.messages.FormattingSavingHandler;
 //import com.acme.ooad.formatters.Formatter;
 //import com.acme.ooad.messages.Message;
 //import com.acme.ooad.savers.Saver;

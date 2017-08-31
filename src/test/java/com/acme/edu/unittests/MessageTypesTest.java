@@ -1,6 +1,6 @@
 //package com.acme.edu.unittests;
 //
-//import com.acme.ooad.FormattingSavingHandler;
+//import com.acme.ooad.messages.FormattingSavingHandler;
 //import com.acme.ooad.messages.IntMessage;
 //import org.junit.Assert;
 //import org.junit.Test;
