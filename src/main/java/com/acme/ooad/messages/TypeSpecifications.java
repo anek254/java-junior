@@ -1,4 +1,4 @@
-package com.acme.ooad.messageformatters;
+package com.acme.ooad.messages;
 
 class TypeSpecifications {
     static final String PRIMITIVE_PREFIX = "primitive: ";

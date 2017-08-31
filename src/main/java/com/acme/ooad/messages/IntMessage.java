@@ -1,15 +1,14 @@
 package com.acme.ooad.messages;
 
 import com.acme.ooad.Logger;
-import com.acme.ooad.messageformatters.MessageFormatter;
+
+import static com.acme.ooad.messages.TypeSpecifications.PRIMITIVE_PREFIX;
 
 public class IntMessage implements Message {
     private int value;
-    private MessageFormatter messageFormatter;
 
-    public IntMessage(int value, MessageFormatter messageFormatter) {
+    public IntMessage(int value) {
         this.value = value;
-        this.messageFormatter = messageFormatter;
     }
 
     public int getValue() {
@@ -18,7 +17,7 @@ public class IntMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.formatMessage(this);
+        return PRIMITIVE_PREFIX + value;
     }
 
     public void updateMessage(Object message, Logger logger) {
@@ -38,7 +37,7 @@ public class IntMessage implements Message {
     }
 
     private void printAndUpdateWhenOverflow(long sum, int limit, Logger logger) {
-        logger.log(new IntMessage(limit, messageFormatter));
+        logger.log(new IntMessage(limit));
         value = (int)(sum % limit);
     }
 }

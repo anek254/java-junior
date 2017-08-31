@@ -1,6 +1,5 @@
 package com.acme.edu;
 
-import com.acme.ooad.messageformatters.*;
 import com.acme.ooad.messages.*;
 import com.acme.ooad.savers.ConsoleSaver;
 
@@ -14,13 +13,13 @@ public class Logger {
     public static void log(Object message) {
         if (isNull(message)) return;
         logger.log();
-        logger.setCurrentMessage(new ObjectMessage(message, new ObjectStandardMessageFormatter()));
+        logger.setCurrentMessage(new ObjectMessage(message));
     }
 
     public static void log(int[] message) {
         if (isNull(message)) return;
         logger.log();
-        logger.setCurrentMessage(new ArrayMessage(message, new ArrayStandardMessageFormatter()));
+        logger.setCurrentMessage(new ArrayMessage(message));
     }
 
     public static void log(int message) {
@@ -30,13 +29,13 @@ public class Logger {
             logger.updateMessage(message);
         } else {
             logger.log();
-            logger.setCurrentMessage(new IntMessage(message, new IntStandardMessageFormatter()));
+            logger.setCurrentMessage(new IntMessage(message));
         }
     }
 
     public static void log(boolean message) {
         logger.log();
-        logger.setCurrentMessage(new BooleanMessage(message, new BooleanStandardMessageFormatter()));
+        logger.setCurrentMessage(new BooleanMessage(message));
     }
 
     public static void log(String message) {
@@ -49,13 +48,13 @@ public class Logger {
             logger.updateMessage(message);
         } else {
             logger.log();
-            logger.setCurrentMessage(new StringMessage(message, new StringStandardMessageFormatter()));
+            logger.setCurrentMessage(new StringMessage(message));
         }
     }
 
     public static void log(char message) {
         logger.log();
-        logger.setCurrentMessage(new CharMessage(message, new CharStandardMessageFormatter()));
+        logger.setCurrentMessage(new CharMessage(message));
     }
 
     public static void log(byte message) {
@@ -65,7 +64,7 @@ public class Logger {
             logger.updateMessage(message);
         } else {
             logger.log();
-            logger.setCurrentMessage(new ByteMessage(message, new ByteStandardMessageFormatter()));
+            logger.setCurrentMessage(new ByteMessage(message));
         }
     }
 

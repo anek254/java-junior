@@ -1,15 +1,13 @@
 package com.acme.ooad.messages;
 
 import com.acme.ooad.Logger;
-import com.acme.ooad.messageformatters.MessageFormatter;
+import static com.acme.ooad.messages.TypeSpecifications.PRIMITIVE_PREFIX;
 
 public class BooleanMessage implements Message {
     private boolean value;
-    private MessageFormatter messageFormatter;
 
-    public BooleanMessage(boolean value, MessageFormatter messageFormatter) {
+    public BooleanMessage(boolean value) {
         this.value = value;
-        this.messageFormatter = messageFormatter;
     }
 
     public boolean getValue() {
@@ -18,7 +16,7 @@ public class BooleanMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.formatMessage(this);
+        return PRIMITIVE_PREFIX + value;
     }
 
     @Override

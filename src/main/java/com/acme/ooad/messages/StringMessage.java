@@ -1,16 +1,14 @@
 package com.acme.ooad.messages;
 
 import com.acme.ooad.Logger;
-import com.acme.ooad.messageformatters.MessageFormatter;
+import static com.acme.ooad.messages.TypeSpecifications.STRING_PREFIX;
 
 public class StringMessage implements Message {
     private String value;
     private int equalStringCount;
-    private MessageFormatter messageFormatter;
 
-    public StringMessage(String value, MessageFormatter messageFormatter) {
+    public StringMessage(String value) {
         this.value = value;
-        this.messageFormatter = messageFormatter;
         this.equalStringCount = 1;
     }
 
@@ -20,7 +18,7 @@ public class StringMessage implements Message {
 
     @Override
     public String messageToString() {
-        return messageFormatter.formatMessage(this);
+        return STRING_PREFIX + value + getPostfix();
     }
 
     public void updateMessage(Object message, Logger logger) {
@@ -30,7 +28,7 @@ public class StringMessage implements Message {
             ++equalStringCount;
         } else {
             logger.log();
-            logger.setCurrentMessage(new StringMessage(stringMessage, messageFormatter));
+            logger.setCurrentMessage(new StringMessage(stringMessage));
             equalStringCount = 1;
         }
     }
