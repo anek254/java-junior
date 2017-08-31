@@ -9,8 +9,7 @@ public class FacadeLogger {
 
     static {
         logger = new Logger(
-                new FormattingSavingHandler(new ConsoleSaver()),
-                System.out::println
+                new FormattingSavingHandler(new ConsoleSaver())
         );
     }
 

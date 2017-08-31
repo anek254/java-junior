@@ -62,6 +62,8 @@ public class FormattingSavingHandler implements EventHandler {
     @Override
     public void handleEvent(Object message) {
         if (message == null) return;
+        if (message instanceof String && message == "") return;
+
         if (currentMessage == null) {
             setCurrentMessage(message);
         } else {
