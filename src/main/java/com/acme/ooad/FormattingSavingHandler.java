@@ -37,6 +37,8 @@ public class FormattingSavingHandler implements EventHandler, Flushable {
             currentMessage = new BooleanMessage((Boolean) message);
         } else if (message instanceof int[]) {
             currentMessage = new ArrayMessage((int[])message);
+        } else if (message instanceof FlushMessage) {
+            currentMessage = null;
         } else {
             currentMessage = new ObjectMessage(message);
         }

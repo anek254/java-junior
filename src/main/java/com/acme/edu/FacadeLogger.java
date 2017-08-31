@@ -4,6 +4,7 @@ import com.acme.ooad.ConsoleEventHandler;
 import com.acme.ooad.Flushable;
 import com.acme.ooad.FormattingSavingHandler;
 import com.acme.ooad.Logger;
+import com.acme.ooad.messages.FlushMessage;
 import com.acme.ooad.savers.ConsoleSaver;
 
 public class FacadeLogger {
@@ -110,5 +111,6 @@ public class FacadeLogger {
         log("str1");
         log("str2");
         log(4);
+        log(new FlushMessage());
     }
 }
