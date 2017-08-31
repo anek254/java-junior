@@ -23,7 +23,7 @@ public class StringMessage implements Message {
     }
 
     public void updateMessage(Object message, FormattingSavingHandler logger) {
-        if (message instanceof String && isEqualToPrevious((String)message)) {
+        if (message instanceof String && isEqualToPrevious((String) message)) {
             ++equalStringCount;
         } else {
             logger.log();

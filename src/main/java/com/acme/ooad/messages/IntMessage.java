@@ -30,7 +30,7 @@ public class IntMessage implements Message {
     }
 
     private void sumWithOverflowCheck(int message, FormattingSavingHandler logger) {
-        long sum = (long)value + message;
+        long sum = (long) value + message;
 
         if (sum > Integer.MAX_VALUE) {
             printAndUpdateWhenOverflow(sum, Integer.MAX_VALUE, logger);
@@ -43,6 +43,6 @@ public class IntMessage implements Message {
 
     private void printAndUpdateWhenOverflow(long sum, int limit, FormattingSavingHandler logger) {
         logger.log(new IntMessage(limit));
-        value = (int)(sum % limit);
+        value = (int) (sum % limit);
     }
 }

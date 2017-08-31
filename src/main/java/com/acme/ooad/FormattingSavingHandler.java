@@ -5,7 +5,7 @@ import com.acme.ooad.formatters.NullFormatter;
 import com.acme.ooad.messages.*;
 import com.acme.ooad.savers.Saver;
 
-public class FormattingSavingHandler implements EventHandler, Flushable {
+public class FormattingSavingHandler implements EventHandler {
     private Message currentMessage;
     private Saver saver;
     private Formatter formatter;
@@ -26,17 +26,17 @@ public class FormattingSavingHandler implements EventHandler, Flushable {
 
     public void setCurrentMessage(Object message) {
         if (message instanceof Integer) {
-            currentMessage = new IntMessage((Integer)message);
+            currentMessage = new IntMessage((Integer) message);
         } else if (message instanceof Byte) {
-            currentMessage = new ByteMessage((Byte)message);
+            currentMessage = new ByteMessage((Byte) message);
         } else if (message instanceof String) {
-            currentMessage = new StringMessage((String)message);
+            currentMessage = new StringMessage((String) message);
         } else if (message instanceof Character) {
-            currentMessage = new CharMessage((Character)message);
+            currentMessage = new CharMessage((Character) message);
         } else if (message instanceof Boolean) {
             currentMessage = new BooleanMessage((Boolean) message);
         } else if (message instanceof int[]) {
-            currentMessage = new ArrayMessage((int[])message);
+            currentMessage = new ArrayMessage((int[]) message);
         } else if (message instanceof FlushMessage) {
             currentMessage = null;
         } else {
@@ -67,18 +67,5 @@ public class FormattingSavingHandler implements EventHandler, Flushable {
         } else {
             currentMessage.updateMessage(message, this);
         }
-
-//        if (message instanceof String && message == "") return;
-
-//        if (currentMessage == null) {
-//            currentMessage = MessageWrapper.wrapInMessage(message);
-//        } else {
-//            currentMessage.updateMessage(message, this);
-//        }
-    }
-
-    @Override
-    public void flush() {
-        log();
     }
 }

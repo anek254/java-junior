@@ -34,7 +34,7 @@ public class ByteMessage implements Message {
     }
 
     private void sumWithOverflowCheck(byte message, FormattingSavingHandler logger) {
-        int sum = (int)value + message;
+        int sum = (int) value + message;
 
         if (sum > Byte.MAX_VALUE) {
             printAndUpdateWhenOverflow(sum, Byte.MAX_VALUE, logger);
@@ -47,6 +47,6 @@ public class ByteMessage implements Message {
 
     private void printAndUpdateWhenOverflow(int sum, byte limit, FormattingSavingHandler logger) {
         logger.log(new ByteMessage(limit));
-        value = (byte)(sum % limit);
+        value = (byte) (sum % limit);
     }
 }

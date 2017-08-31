@@ -17,6 +17,6 @@ public class FlushMessage implements Message {
 
     @Override
     public String toString() {
-        return null;
+        return "";
     }
 }

@@ -1,6 +1,7 @@
 package com.acme.ooad.messages;
 
 import com.acme.ooad.FormattingSavingHandler;
+
 import static com.acme.ooad.messages.TypeSpecifications.ARRAY_PREFIX;
 
 public class ArrayMessage implements Message {
