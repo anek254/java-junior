@@ -1,6 +1,7 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.Logger;
+import com.acme.ooad.FormattingSavingHandler;
+
 import static com.acme.ooad.messages.TypeSpecifications.STRING_PREFIX;
 
 public class StringMessage implements Message {
@@ -21,15 +22,12 @@ public class StringMessage implements Message {
         return STRING_PREFIX + value + getPostfix();
     }
 
-    public void updateMessage(Object message, Logger logger) {
-        String stringMessage = (String)message;
-
-        if (isEqualToPrevious(stringMessage)) {
+    public void updateMessage(Object message, FormattingSavingHandler logger) {
+        if (message instanceof String && isEqualToPrevious((String)message)) {
             ++equalStringCount;
         } else {
             logger.log();
-            logger.setCurrentMessage(new StringMessage(stringMessage));
-            equalStringCount = 1;
+            logger.setCurrentMessage(message);
         }
     }
 

@@ -1,7 +1,7 @@
 //package com.acme.edu.moduletests;
 //
 //import com.acme.edu.SysoutCaptureAndAssertionAbility;
-//import com.acme.ooad.Logger;
+//import com.acme.ooad.FormattingSavingHandler;
 //import com.acme.ooad.messageformatters.ByteStandardMessageFormatter;
 //import com.acme.ooad.messageformatters.IntStandardMessageFormatter;
 //import com.acme.ooad.messageformatters.StringStandardMessageFormatter;
@@ -19,7 +19,7 @@
 //    public void shouldSumIntegersWhenSequenceOfIntegers() {
 //        //region given
 //        IntStandardMessageFormatter messageFormatterDummy = mock(IntStandardMessageFormatter.class);
-//        Logger loggerDummy = mock(Logger.class);
+//        FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
 //        IntMessage sut = new IntMessage(5, messageFormatterDummy);
 //        //endregion
 //
@@ -36,7 +36,7 @@
 //    public void shouldSumIntegersWithOverflowWhenSequenceOfIntegers() {
 //        //region given
 //        IntStandardMessageFormatter messageFormatterDummy = mock(IntStandardMessageFormatter.class);
-//        Logger loggerMock = mock(Logger.class);
+//        FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
 //        IntMessage sut = new IntMessage(5, messageFormatterDummy);
 //        //endregion
 //
@@ -55,7 +55,7 @@
 //    public void shouldSumIntegersWithNegativeOverflowWhenSequenceOfIntegers() {
 //        //region given
 //        IntStandardMessageFormatter messageFormatterDummy = mock(IntStandardMessageFormatter.class);
-//        Logger loggerMock = mock(Logger.class);
+//        FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
 //        IntMessage sut = new IntMessage(-5, messageFormatterDummy);
 //        //endregion
 //
@@ -74,7 +74,7 @@
 //    public void shouldSumByteWhenSequenceOfBytes() {
 //        //region given
 //        ByteStandardMessageFormatter messageFormatterDummy = mock(ByteStandardMessageFormatter.class);
-//        Logger loggerDummy = mock(Logger.class);
+//        FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
 //        ByteMessage sut = new ByteMessage((byte)5, messageFormatterDummy);
 //        //endregion
 //
@@ -91,7 +91,7 @@
 //    public void shouldSumBytesWithOverflowWhenSequenceOfBytes() {
 //        //region given
 //        ByteStandardMessageFormatter messageFormatterDummy = mock(ByteStandardMessageFormatter.class);
-//        Logger loggerMock = mock(Logger.class);
+//        FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
 //        ByteMessage sut = new ByteMessage((byte)5, messageFormatterDummy);
 //        //endregion
 //
@@ -110,7 +110,7 @@
 //    public void shouldSumBytesWithNegativeOverflowWhenSequenceOfBytes() {
 //        //region given
 //        ByteStandardMessageFormatter messageFormatterDummy = mock(ByteStandardMessageFormatter.class);
-//        Logger loggerMock = mock(Logger.class);
+//        FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
 //        ByteMessage sut = new ByteMessage((byte)-5, messageFormatterDummy);
 //        //endregion
 //
@@ -129,7 +129,7 @@
 //    public void shouldCountEqualStringsWhenSequenceOfStrings() {
 //        //region given
 //        StringStandardMessageFormatter messageFormatterDummy = mock(StringStandardMessageFormatter.class);
-//        Logger loggerDummy = mock(Logger.class);
+//        FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
 //        StringMessage sut = new StringMessage("str 1", messageFormatterDummy);
 //        //endregion
 //
@@ -148,7 +148,7 @@
 //    public void shouldCreateNewStringMessageWhenSequenceOfDifferentStrings() {
 //        //region given
 //        StringStandardMessageFormatter messageFormatterDummy = mock(StringStandardMessageFormatter.class);
-//        Logger loggerMock = mock(Logger.class);
+//        FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
 //        StringMessage sut = new StringMessage("str 1", messageFormatterDummy);
 //        //endregion
 //

@@ -1,6 +1,7 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.Logger;
+import com.acme.ooad.FormattingSavingHandler;
+
 import static com.acme.ooad.messages.TypeSpecifications.PRIMITIVE_PREFIX;
 
 public class ByteMessage implements Message {
@@ -23,11 +24,16 @@ public class ByteMessage implements Message {
         return PRIMITIVE_PREFIX + value;
     }
 
-    public void updateMessage(Object message, Logger logger) {
-        sumWithOverflowCheck((Byte)message, logger);
+    public void updateMessage(Object message, FormattingSavingHandler logger) {
+        if (message instanceof Byte) {
+            sumWithOverflowCheck((Byte) message, logger);
+        } else {
+            logger.log();
+            logger.setCurrentMessage(message);
+        }
     }
 
-    private void sumWithOverflowCheck(byte message, Logger logger) {
+    private void sumWithOverflowCheck(byte message, FormattingSavingHandler logger) {
         int sum = (int)value + message;
 
         if (sum > Byte.MAX_VALUE) {
@@ -39,7 +45,7 @@ public class ByteMessage implements Message {
         }
     }
 
-    private void printAndUpdateWhenOverflow(int sum, byte limit, Logger logger) {
+    private void printAndUpdateWhenOverflow(int sum, byte limit, FormattingSavingHandler logger) {
         logger.log(new ByteMessage(limit));
         value = (byte)(sum % limit);
     }

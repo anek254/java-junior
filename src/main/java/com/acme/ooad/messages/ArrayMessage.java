@@ -1,6 +1,6 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.Logger;
+import com.acme.ooad.FormattingSavingHandler;
 import static com.acme.ooad.messages.TypeSpecifications.ARRAY_PREFIX;
 
 public class ArrayMessage implements Message {
@@ -35,5 +35,8 @@ public class ArrayMessage implements Message {
     }
 
     @Override
-    public void updateMessage(Object message, Logger logger) {}
+    public void updateMessage(Object message, FormattingSavingHandler logger) {
+        logger.log();
+        logger.setCurrentMessage(message);
+    }
 }

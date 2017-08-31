@@ -1,6 +1,6 @@
 package com.acme.edu.moduletests;
 
-import com.acme.ooad.Logger;
+import com.acme.ooad.FormattingSavingHandler;
 import com.acme.ooad.formatters.Formatter;
 import com.acme.ooad.messages.Message;
 import com.acme.ooad.savers.Saver;
@@ -16,7 +16,7 @@ public class OoadLoggerTest {
         Message message = null;
         Saver saverMock = mock(Saver.class);
         Formatter formatterMock = mock(Formatter.class);
-        Logger logger = new Logger(saverMock, formatterMock);
+        FormattingSavingHandler logger = new FormattingSavingHandler(saverMock, formatterMock);
 
         logger.setCurrentMessage(message);
         logger.log();
@@ -30,7 +30,7 @@ public class OoadLoggerTest {
         Message message = null;
         Saver saverMock = mock(Saver.class);
         Formatter formatterMock = mock(Formatter.class);
-        Logger logger = new Logger(saverMock, formatterMock);
+        FormattingSavingHandler logger = new FormattingSavingHandler(saverMock, formatterMock);
 
         logger.log(message);
 
@@ -43,7 +43,7 @@ public class OoadLoggerTest {
         Message message = mock(Message.class);
         Saver saverMock = mock(Saver.class);
         Formatter formatterMock = mock(Formatter.class);
-        Logger logger = new Logger(saverMock, formatterMock);
+        FormattingSavingHandler logger = new FormattingSavingHandler(saverMock, formatterMock);
 
         logger.setCurrentMessage(message);
         logger.log();

@@ -1,6 +1,6 @@
 package com.acme.ooad.messages;
 
-import com.acme.ooad.Logger;
+import com.acme.ooad.FormattingSavingHandler;
 
 import static com.acme.ooad.messages.TypeSpecifications.OBJECT_PREFIX;
 
@@ -21,5 +21,8 @@ public class ObjectMessage implements Message {
     }
 
     @Override
-    public void updateMessage(Object message, Logger logger) {}
+    public void updateMessage(Object message, FormattingSavingHandler logger) {
+        logger.log();
+        logger.setCurrentMessage(message);
+    }
 }

@@ -1,45 +1,21 @@
 package com.acme.ooad;
 
-import com.acme.ooad.formatters.Formatter;
-import com.acme.ooad.formatters.NullFormatter;
-import com.acme.ooad.messages.Message;
-import com.acme.ooad.savers.Saver;
+import java.util.ArrayList;
+import java.util.List;
+import static java.util.Arrays.asList;
 
 public class Logger {
-    private Message currentMessage;
-    private Saver saver;
-    private Formatter formatter;
+    private List<EventHandler> handlers = new ArrayList<>();
 
-    public Logger(Saver saver) {
-        this.saver = saver;
-        this.formatter = new NullFormatter();
+    public Logger(EventHandler... eventHandlers) {
+        this.handlers.addAll(asList(eventHandlers));
     }
 
-    public Logger(Saver saver, Formatter formatter) {
-        this.saver = saver;
-        this.formatter = formatter;
+    public void logEvent(Object message) {
+        handlers.forEach(element -> element.handleEvent(message));
     }
 
-    public Message getCurrentMessage() {
-        return currentMessage;
-    }
-
-    public void setCurrentMessage(Message message) {
-        this.currentMessage = message;
-    }
-
-    public void log() {
-        if (currentMessage == null) return;
-        saver.save(formatter.format(currentMessage.messageToString()));
-        currentMessage = null;
-    }
-
-    public void log(Message message) {
-        if (message == null) return;
-        saver.save(formatter.format(message.messageToString()));
-    }
-
-    public void updateMessage(Object message) {
-        currentMessage.updateMessage(message, this);
-    }
+//    public void flush() {
+//        handlers.forEach(element -> element.flush());
+//    }
 }
