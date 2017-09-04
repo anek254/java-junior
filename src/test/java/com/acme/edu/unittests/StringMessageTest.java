@@ -1,8 +1,6 @@
 package com.acme.edu.unittests;
 
-import com.acme.ooad.messages.CharMessage;
 import com.acme.ooad.messages.FormattingSavingHandler;
-import com.acme.ooad.messages.ObjectMessage;
 import com.acme.ooad.messages.StringMessage;
 import org.junit.Assert;
 import org.junit.Test;
@@ -37,8 +35,8 @@ public class StringMessageTest {
 
     @Test
     public void shouldFormatInStringMessageWhenString() {
-        StringMessage arrayMessage = new StringMessage("str");
-        Assert.assertEquals("string: str", arrayMessage.messageToString());
+        StringMessage stringMessage = new StringMessage("str");
+        Assert.assertEquals("string: str", stringMessage.messageToString());
     }
 
     @Test

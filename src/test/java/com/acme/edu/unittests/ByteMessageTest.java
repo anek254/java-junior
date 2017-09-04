@@ -1,47 +1,65 @@
 package com.acme.edu.unittests;
 
-import com.acme.ooad.messages.BooleanMessage;
 import com.acme.ooad.messages.ByteMessage;
 import com.acme.ooad.messages.FormattingSavingHandler;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class ByteMessageTest {
-    @Test
-    public void shouldUpdateByteSumWhenByteWithoutOverflow(){
+    @Before
+    public void setUpSystemOut() {
         FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
-        ByteMessage sut = new ByteMessage((byte) 1);
-
-        sut.updateMessage((byte) 2, loggerDummy);
-
-        Assert.assertEquals((byte) 3, sut.getValue());
     }
 
     @Test
-    public void shouldUpdateByteSumWhenByteWithMaxOverflow(){
+    public void shouldSumMaxBoundaryValueWhenByteMaxValue() {
+        FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
+        ByteMessage sut = new ByteMessage((byte) 0);
+
+        sut.updateMessage(Byte.MAX_VALUE, loggerDummy);
+
+        Assert.assertEquals(Byte.MAX_VALUE, sut.getValue());
+    }
+
+    @Test
+    public void shouldSumMinBoundaryValueWhenByteMinValue() {
+        FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
+        ByteMessage sut = new ByteMessage((byte) 0);
+
+        sut.updateMessage(Byte.MIN_VALUE, loggerDummy);
+
+        Assert.assertEquals(Byte.MIN_VALUE, sut.getValue());
+    }
+
+    @Test
+    public void shouldUpdateByteSumWhenByteWithMaxOverflow() {
         FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
         ByteMessage sut = new ByteMessage((byte) 2);
 
         sut.updateMessage((byte) (Byte.MAX_VALUE - 1), loggerDummy);
 
         Assert.assertEquals((byte) 1, sut.getValue());
+        verify(loggerDummy).log(any(ByteMessage.class));
     }
 
     @Test
-    public void shouldUpdateByteSumWhenByteWithMinOverflow(){
+    public void shouldUpdateByteSumWhenByteWithMinOverflow() {
         FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
         ByteMessage sut = new ByteMessage((byte) -2);
 
         sut.updateMessage((byte) (Byte.MIN_VALUE + 1), loggerDummy);
 
         Assert.assertEquals((byte) -1, sut.getValue());
+        verify(loggerDummy).log(any(ByteMessage.class));
     }
 
     @Test
-    public void shouldLogAndUpdateCurrentMessageWhenUpdateByteMessage(){
+    public void shouldLogAndUpdateCurrentMessageWhenUpdateByteMessage() {
         FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
         ByteMessage sut = new ByteMessage((byte) 1);
         Object testObject = new Object();

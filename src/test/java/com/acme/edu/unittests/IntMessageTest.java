@@ -1,27 +1,33 @@
 package com.acme.edu.unittests;
 
-import com.acme.ooad.messages.ByteMessage;
 import com.acme.ooad.messages.FormattingSavingHandler;
 import com.acme.ooad.messages.IntMessage;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Matchers;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class IntMessageTest {
     @Test
-    public void shouldUpdateIntSumWhenIntWithoutOverflow(){
+    public void shouldSumMaxBoundaryValueWhenByteMaxValue(){
         FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
-        IntMessage sut = new IntMessage(1);
+        IntMessage sut = new IntMessage(0);
 
-        sut.updateMessage(2, loggerDummy);
+        sut.updateMessage(Integer.MAX_VALUE, loggerDummy);
 
-        Assert.assertEquals(3, sut.getValue());
+        Assert.assertEquals(Integer.MAX_VALUE, sut.getValue());
+    }
+
+    @Test
+    public void shouldSumMinBoundaryValueWhenByteMinValue(){
+        FormattingSavingHandler loggerDummy = mock(FormattingSavingHandler.class);
+        IntMessage sut = new IntMessage(0);
+
+        sut.updateMessage(Integer.MIN_VALUE, loggerDummy);
+
+        Assert.assertEquals(Integer.MIN_VALUE, sut.getValue());
     }
 
     @Test

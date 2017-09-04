@@ -1,6 +1,5 @@
 package com.acme.edu.unittests;
 
-import com.acme.ooad.messages.BooleanMessage;
 import com.acme.ooad.messages.CharMessage;
 import com.acme.ooad.messages.FormattingSavingHandler;
 import org.junit.Assert;
@@ -11,7 +10,7 @@ import static org.mockito.Mockito.verify;
 
 public class CharMessageTest {
     @Test
-    public void shouldLogAndUpdateCurrentMessageWhenUpdateCharMessage(){
+    public void shouldLogAndUpdateCurrentMessageWhenUpdateCharMessage() {
         FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
         CharMessage sut = new CharMessage('q');
         Object testObject = new Object();
@@ -24,7 +23,7 @@ public class CharMessageTest {
 
     @Test
     public void shouldFormatInCharMessageWhenChar() {
-        CharMessage arrayMessage = new CharMessage('q');
-        Assert.assertEquals("char: q", arrayMessage.messageToString());
+        CharMessage charMessage = new CharMessage('q');
+        Assert.assertEquals("char: q", charMessage.messageToString());
     }
 }

@@ -1,19 +1,26 @@
 package com.acme.edu.unittests;
 
-import com.acme.ooad.messages.CharMessage;
+import com.acme.ooad.messages.BooleanMessage;
 import com.acme.ooad.messages.FlushMessage;
 import com.acme.ooad.messages.FormattingSavingHandler;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class FlushMessageTest {
+    private FlushMessage sut;
+
+    @Before
+    public void setUpSystemOut() {
+        sut = new FlushMessage();
+    }
+
     @Test
-    public void shouldLogCurrentMessageWhenUpdateFlushMessage(){
+    public void shouldLogCurrentMessageWhenUpdateFlushMessage() {
         FormattingSavingHandler loggerMock = mock(FormattingSavingHandler.class);
-        FlushMessage sut = new FlushMessage();
         Object testObject = new Object();
 
         sut.updateMessage(testObject, loggerMock);
@@ -24,13 +31,11 @@ public class FlushMessageTest {
 
     @Test
     public void shouldFormatInNullMessageWhenFlush() {
-        FlushMessage arrayMessage = new FlushMessage();
-        Assert.assertEquals(null, arrayMessage.messageToString());
+        Assert.assertEquals(null, sut.messageToString());
     }
 
     @Test
     public void shouldFormatInEmptyStringMessageWhenFlushToString() {
-        FlushMessage arrayMessage = new FlushMessage();
-        Assert.assertEquals("", arrayMessage.toString());
+        Assert.assertEquals("", sut.toString());
     }
 }
