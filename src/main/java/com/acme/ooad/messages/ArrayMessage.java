@@ -9,10 +9,6 @@ public class ArrayMessage implements Message {
         this.value = value;
     }
 
-    public int[] getValue() {
-        return value;
-    }
-
     @Override
     public String messageToString() {
         return ARRAY_PREFIX + arrayToString(value);

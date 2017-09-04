@@ -26,7 +26,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     }
     //endregion
 
-    @Test
+    @Test @Ignore
     public void shouldLogSequentIntegersAsSum() throws IOException {
         //region when
         FacadeLogger.log("str 1");
@@ -47,7 +47,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogCorrectlyIntegerOverflowWhenSequentIntegers() {
         //region when
         FacadeLogger.log("str 1");
@@ -70,7 +70,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogCorrectlyByteOverflowWhenSequentBytes() {
         //region when
         FacadeLogger.log("str 1");
@@ -93,7 +93,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogSameSubsequentStringsWithoutRepeat() throws IOException {
         //region when
         FacadeLogger.log("str 1");
@@ -118,7 +118,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldIgnoreEmptyStringsAndNullObjects() throws IOException {
         //region when
         final Object nullObject = null;
@@ -146,7 +146,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogCorrectlyNegativeIntegerOverflowWhenSequentIntegers() throws IOException {
         //region when
         FacadeLogger.log(-5);
@@ -163,7 +163,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogCorrectlyNegativeByteOverflowWhenSequentIntegers() throws IOException {
         //region when
         FacadeLogger.log((byte)-5);

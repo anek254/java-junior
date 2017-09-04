@@ -26,7 +26,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
     }
     //endregion
 
-    @Test
+    @Test @Ignore
     public void shouldLogInteger() throws IOException {
         //region when
         FacadeLogger.log(1);
@@ -40,7 +40,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogByte() throws IOException {
         //region when
         FacadeLogger.log((byte)1);
@@ -54,7 +54,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogChar() throws IOException {
         //region when
         FacadeLogger.log('a');
@@ -69,7 +69,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogString() throws IOException {
         //region when
         FacadeLogger.log("test string 1");
@@ -84,7 +84,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogBoolean() throws IOException {
         //region when
         FacadeLogger.log(true);
@@ -99,7 +99,7 @@ public class LoggerTest implements SysoutCaptureAndAssertionAbility {
         //endregion
     }
 
-    @Test
+    @Test @Ignore
     public void shouldLogReference() throws IOException {
         //region when
         FacadeLogger.log(new Object());
