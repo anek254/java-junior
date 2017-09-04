@@ -33,7 +33,7 @@ public class StringMessage implements Message {
         return (value != null) && value.equals(string);
     }
 
-    public String getPostfix() {
+    private String getPostfix() {
         return (equalStringCount > 1) ? " (x" + equalStringCount + ")" : "";
     }
 }
