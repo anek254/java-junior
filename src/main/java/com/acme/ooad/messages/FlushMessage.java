@@ -1,6 +1,8 @@
 package com.acme.ooad.messages;
 
-public class FlushMessage implements Message {
+import java.io.Serializable;
+
+public class FlushMessage implements Message, Serializable {
 
     @Override
     public String messageToString() {
